@@ -30,8 +30,48 @@ void fillArrays(int arr1[], int arr2[],int arr3[]){
 }
 
 // required 3 functions
-void Quicksort_midpoint(int numbers[], int i, int k) {
+int PartitionMid(int numbers[], int lowIndex, int highIndex) {
+	int midpoint = lowIndex + (highIndex - lowIndex) / 2;
+	int pivot = numbers[midpoint];
+	bool done = false;
 
+	 while (!done) {
+      
+      while (numbers[lowIndex] < pivot) 
+         lowIndex += 1;
+         
+      while (pivot < numbers[highIndex]) 
+         highIndex -= 1;
+         
+      if (lowIndex >= highIndex) 
+         done = true;
+         
+      else {
+         
+         int temp = numbers[lowIndex];
+         numbers[lowIndex] = numbers[highIndex];
+         numbers[highIndex] = temp;
+         
+         lowIndex += 1;
+    	 highIndex -= 1;
+    	}
+	}
+	return highIndex;	
+
+}
+    	
+
+         
+      
+void Quicksort_midpoint(int numbers[], int i, int k) {
+	
+    if (i>= k) 
+      return;
+   
+    int lowEndIndex = PartitionMid(numbers, i, k);
+   
+   Quicksort_midpoint(numbers, i, lowEndIndex);
+   Quicksort_midpoint(numbers, lowEndIndex + 1, k);
 }
 
 void Quicksort_medianOfThree(int numbers[], int i, int k) {
