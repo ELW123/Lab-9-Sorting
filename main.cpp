@@ -55,7 +55,7 @@ int PartitionMid(int numbers[], int lowIndex, int highIndex) {
          lowIndex += 1;
     	 highIndex -= 1;
     	}
-	}
+   }
 	return highIndex;	
 
 }
